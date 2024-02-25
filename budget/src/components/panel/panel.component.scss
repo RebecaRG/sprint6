@@ -1,0 +1,39 @@
+.form-control-sm{
+    width: 3rem;
+    font-weight: bold;
+}
+
+.btn-sm{
+    --bs-btn-padding-y: .1rem;
+    --bs-btn-padding-x: .3rem;
+    --bs-btn-font-size: .5rem;
+}
+
+.info{
+    background: url("/././assets/info-circle.svg") no-repeat;
+    border: none;
+    background-size: contain;
+    width: 1rem;
+    height: 1rem;
+}
+
+.up{
+    background: url("/././assets/iconUp.png") no-repeat;
+    border: none;
+    background-size: contain;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.down{
+    background: url("/././assets/iconDown.png") no-repeat;
+    border: none;
+    background-size: contain;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.border-secondary{
+    border: 0.15rem solid #0000006B !important;
+}
+

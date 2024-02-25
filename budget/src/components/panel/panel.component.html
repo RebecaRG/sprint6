@@ -1,0 +1,79 @@
+<div [formGroup]="formGroup" class="form-field">
+  @for (price of getCtrl("price2", formGroup)?.controls; track $index) {
+
+  <form>
+    <div class="form-field d-flex align-items-center justify-content-end mb-2">
+      <div class="d-flex align-items-center">
+        <button (click)="open(content1)" class="info mx-2"></button>
+        <label class="me-4">Número de pàgines</label>
+      </div>
+      <button (click)="down('p')" class="down mx-1"></button>
+      <input
+        type="text"
+        class="form-control form-control-sm rounded border border-2 border-secondary text-center"
+        placeholder="{{ pagesValue }}"
+        readonly
+        [formControl]="pages"
+      />
+      <button (click)="up('p')" class="up mx-1"></button>
+    </div>
+    <div class="form-field d-flex align-items-center justify-content-end">
+      <div class="d-flex align-items-center">
+        <button (click)="open(content2)" class="info mx-2"></button>
+        <label class="me-4">Número de llenguatges</label>
+      </div>
+      <button (click)="down('l')" class="down mx-1"></button>
+      <input
+        type="text"
+        class="form-control form-control-sm rounded border border-1 border-secondary text-center"
+        placeholder="{{ lenguageValue }}"
+        readonly
+        [formControl]="lenguage"
+      />
+
+      <button (click)="up('l')" class="up mx-1"></button>
+    </div>
+  </form>
+
+  <!-- 
+   {{pages.value}} -->
+  }
+</div>
+
+<!-- modal -->
+<ng-template #content1 let-modal>
+  <div class="text-end">
+    <button
+      type="button"
+      class="btn-close m-4"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body mt-3 mb-5 mx-5 text-center">
+    <h3 class="mb-3"><strong>Número de pàgines</strong></h3>
+    <div class="mb-4">
+      <span>Afegeix les pàgines que tindrà el teu projecte. </span><br />
+      <span>El cost de cada pàgina és de 30€. </span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #content2 let-modal>
+  <div class="text-end">
+    <button
+      type="button"
+      class="btn-close m-4"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body m-5 text-center">
+    <h3 class="mb-3"><strong>Número de llenguatges</strong></h3>
+    <div class="mb-4">
+      <span>Afegeix els llenguatges que tindrà el teu projecte. </span><br />
+      <span>El cost de cada llenguatge és de 30€. </span>
+    </div>
+  </div>
+</ng-template>
+<!-- end modal -->
