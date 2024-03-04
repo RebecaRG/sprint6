@@ -23,9 +23,10 @@ describe('BudgetService', () => {
       email: 'pere.perez@gmail.com',
       services: ['web', 'seo'],
       pagesWeb: 4,
-      lenguagesWeb: 5,
+      languagesWeb: 5,
       totalWeb: 0,
-      total: 0
+      total: 0,
+      date: new Date()
     };
 
     const service: BudgetService = TestBed.inject(BudgetService);
@@ -40,9 +41,10 @@ describe('BudgetService', () => {
       email: 'maria.castell@gmail.com',
       services: ['web', 'ads'],
       pagesWeb: 3,
-      lenguagesWeb: 2,
+      languagesWeb: 2,
       totalWeb: 0,
-      total: 0
+      total: 0,
+      date: new Date()
     };
 
     const service: BudgetService = TestBed.inject(BudgetService);

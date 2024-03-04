@@ -1,25 +1,28 @@
-import { Component, Input, SimpleChanges, OnInit, inject, TemplateRef } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { Component, Input, SimpleChanges, inject, TemplateRef} from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { BudgetService } from '../../app/services/budget.service';
 import { Ibudget } from '../../app/interfaces/i-budget';
 import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { WelcomeComponent } from '../welcome/welcome.component';
 
 @Component({
   selector: 'app-panel',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, NgbDatepickerModule],
+  imports: [ReactiveFormsModule, NgClass, NgbDatepickerModule, WelcomeComponent],
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.scss'
 })
 export class PanelComponent {
-  @Input() formGroup!: FormGroup 
+  @Input() formGroup!: FormGroup;
   @Input() budgets : Ibudget[] = [];
+  @Input() enabled: boolean = false
+  public form: FormGroup;
 
-  constructor(private iBudgetService: BudgetService, private form: FormBuilder) {
-    this.formGroup = this.form.group({
-      pages: new FormControl(0, [Validators.required, Validators.minLength(2)]),
-      lenguage: new FormControl(0, [Validators.required, Validators.minLength(2)]),
+  constructor(private iBudgetService: BudgetService, private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      pages: [''],
+      language: ['']
     });
   }
 
@@ -30,40 +33,34 @@ export class PanelComponent {
           this.budgets[0].pagesWeb = value;
           this.budgets[0].totalWeb = this.iBudgetService.calculateTotalWeb(this.budgets[0]); 
           this.budgets[0].total = this.iBudgetService.calculateTotal(this.budgets[0]); 
-          console.log("totalWeb= " + this.budgets[0].totalWeb, "pagesWeb= " + this.budgets[0].pagesWeb)
         }
       });
   
-      this.lenguage.valueChanges.subscribe(value => {
+      this.language.valueChanges.subscribe(value => {
         if (value !== null) {
-          this.budgets[0].lenguagesWeb = value;
+          this.budgets[0].languagesWeb = value;
           this.budgets[0].totalWeb = this.iBudgetService.calculateTotalWeb(this.budgets[0]); 
           this.budgets[0].total = this.iBudgetService.calculateTotal(this.budgets[0]); 
-          console.log("totalWeb= " + this.budgets[0].totalWeb, "lenguagesWeb= " + this.budgets[0].lenguagesWeb)
         }
       });
     }
   }
 
   pages = new FormControl(0);
-  lenguage = new FormControl(0);
+  language = new FormControl(0);
 
   get pagesValue() {
     return this.pages.value;
   }
 
-  get lenguageValue() {
-    return this.lenguage.value;
+  get languageValue() {
+    return this.language.value;
   }
 
-  getCtrl(key: string, form: FormGroup): any {
-    return form.get(key);
-  }
-  
   down(letter:string) {
     if(letter === 'l'){
-      if(this.lenguageValue){
-        this.lenguage.setValue(+this.lenguageValue - 1);
+      if(this.languageValue){
+        this.language.setValue(+this.languageValue - 1);
       }
     } else if (letter === 'p'){
       if(this.pagesValue){
@@ -74,8 +71,8 @@ export class PanelComponent {
 
   up(letter:string)  {
     if(letter === 'l'){
-      if(this.lenguageValue || this.lenguageValue == 0){
-        this.lenguage.setValue(+this.lenguageValue + 1);
+      if(this.languageValue || this.languageValue == 0){
+        this.language.setValue(+this.languageValue + 1);
       
       }
     } else if (letter === 'p'){
@@ -110,5 +107,17 @@ private getDismissReason(reason: any): string {
       return `with: ${reason}`;
   }
 }
+// end modal 
+
+
+resetPriceWeb(){
+  this.pages.setValue(0);
+  this.language.setValue(0);
+}
+
+resetCheck3(){
+  this.resetPriceWeb();
+}
+
 }
 

@@ -1,7 +1,6 @@
-<div [formGroup]="formGroup" class="form-field">
-  @for (price of getCtrl("price2", formGroup)?.controls; track $index) {
-
-  <form>
+<div  class="form-field" >
+  <form [formGroup]="form">
+   
     <div class="form-field d-flex align-items-center justify-content-end mb-2">
       <div class="d-flex align-items-center">
         <button (click)="open(content1)" class="info mx-2"></button>
@@ -13,7 +12,7 @@
         class="form-control form-control-sm rounded border border-2 border-secondary text-center"
         placeholder="{{ pagesValue }}"
         readonly
-        [formControl]="pages"
+        formControlName="pages"
       />
       <button (click)="up('p')" class="up mx-1"></button>
     </div>
@@ -26,18 +25,14 @@
       <input
         type="text"
         class="form-control form-control-sm rounded border border-1 border-secondary text-center"
-        placeholder="{{ lenguageValue }}"
+        placeholder="{{ languageValue }}"
         readonly
-        [formControl]="lenguage"
+        formControlName="language"
       />
 
       <button (click)="up('l')" class="up mx-1"></button>
     </div>
   </form>
-
-  <!-- 
-   {{pages.value}} -->
-  }
 </div>
 
 <!-- modal -->

@@ -1,0 +1,30 @@
+.btnWidth{
+    width: 100% !important;
+   
+}
+
+.btnCaract{
+    height: 2.35rem;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}
+
+input::placeholder {
+    color: rgb(172, 172, 172);
+}
+
+@media (min-width: 992px) { 
+    .btnCaract{
+        font-size: 72%;
+    }
+    .min-height{
+        height: 6.5rem !important;
+    }
+}
+
+@media (min-width: 1200px) { 
+    .btnCaract{
+        font-size: 100%;
+    }
+}
+

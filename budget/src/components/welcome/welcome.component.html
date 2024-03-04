@@ -1,0 +1,55 @@
+
+  <div
+    class="shadow rounded-4 mx-5 my-3 p-3 d-flex row align-items-center d-lg-inline-flex">
+
+    <h4 class="d-flex align-items-center justify-content-center justify-content-lg-start align-items-lg-start my-auto ms-2 my-lg-2">
+      <strong>Demanar pressupost</strong>
+    </h4>
+
+    <form [formGroup]="formUser" class="d-flex flex-column flex-lg-row align-items-center justify-content-center col-10 col-md-12 mx-auto my-2 d-lg-inline-flex">
+
+    <div class="mt-2 mx-lg-1 mx-lx-2 col-lg-3 min-height">
+    <input type="text" formControlName= "name" class="form-control" placeholder="Nom">
+    <div class="alert alert-danger mt-1" [hidden]="name.valid || name.pristine">
+    <span>
+        @if(name.errors?.['required']){
+        El nom és obliagatori}</span>
+    <span>
+        @if(name.errors?.['pattern']){
+        Escriu nom i cognom }</span>
+    </div>
+  </div>
+
+  <div class="mt-2 mx-lg-1 mx-lx-2 col-lg-3 min-height">
+    <input type="tel" formControlName= "telephone" class="form-control" placeholder="Telèfon">
+    <div class="alert alert-danger mt-1" [hidden]="telephone.valid || telephone.pristine">
+    <span>
+            @if(telephone.errors?.['required']){
+            El telèfon és obliagatori}</span>
+        <span>
+            @if(telephone.errors?.['pattern']){
+            El telephone ha de ser vàlid}</span>
+    </div>
+    </div>
+    <div class="mt-2 mx-lg-1 mx-lx-2 col-lg-3 min-height">
+    <input type="email" formControlName= "email" class="form-control" placeholder="Email">
+    <div class="alert alert-danger mt-1" [hidden]="email.valid || email.pristine">
+        <span>
+            @if(email.errors?.['required']){
+            L'email és obliagatori}</span>
+       <span>
+            @if(email.errors?.['email']){
+            L'email ha de ser vàlid}</span>
+    </div>
+    </div>
+
+    
+    <div class=" mt-2 justify-content-center mx-auto mx-lg-0 mx-lg-1 mx-xl-2 btnWidth d-flex d-lg-block flex-column  align-items-center min-height justify-content-lg-end">
+    <button (click)="send()" class="btn btn-success btnCaract w-auto" [disabled]="formUser.invalid">Sol·licitar pressupost-> </button>
+    <div class="alert alert-danger mt-1 w-auto" [hidden]="!errorTotal">
+        <span>Selecciona una opció </span>
+    </div>
+    </div>
+
+</form>
+</div>

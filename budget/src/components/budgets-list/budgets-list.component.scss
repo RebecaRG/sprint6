@@ -1,0 +1,21 @@
+
+.cursor{
+  cursor: pointer;
+}
+
+.cursor:active{
+  font-weight: bolder;
+}
+
+.cursor:hover{
+  color: rgb(180, 180, 180)
+}
+
+.hrStyle{
+    border-top: 0.15rem dashed gray !important; 
+    width: 100%
+}
+
+input::placeholder {
+  color: rgb(172, 172, 172);
+}

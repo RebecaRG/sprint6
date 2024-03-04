@@ -10,7 +10,7 @@
         class="form-field shadow rounded-4 mx-5 my-3 p-3 row d-flex align-items-center"
       >
         <div class="col-12 col-md-5">
-          <label for="" class="form-label"
+          <label class="form-label"
             ><h4><strong>Seo</strong></h4></label
           >
 
@@ -41,7 +41,7 @@
         class="form-field shadow rounded-4 mx-5 my-3 p-3 row d-flex align-items-center"
       >
         <div class="col-12 col-md-5">
-          <label for="" class="form-label"
+          <label class="form-label"
             ><h4><strong>Ads</strong></h4></label
           >
 
@@ -71,7 +71,7 @@
         class="form-field shadow rounded-4 mx-5 my-3 p-3 row d-flex align-items-center"
       >
         <div class="col-12 col-md-5">
-          <label for="" class="form-label"
+          <label class="form-label"
             ><h4><strong>Web</strong></h4></label
           >
           <p>Programació d'una web responsive completa</p>
@@ -84,7 +84,7 @@
         >
           <input
             class="form-check-input me-2"
-            formArrayName="price2"
+            formControlName="price2"
             type="checkbox"
             value="2"
             id="flexCheck2"
@@ -94,6 +94,7 @@
             Afegir
           </label>
         </div>
+
         <app-panel
           [hidden]="!isFlexCheck2Selected"
           [formGroup]="formParent"
@@ -101,15 +102,23 @@
         >
         </app-panel>
       </div>
-
-      <div class="d-flex justify-content-end mx-5 my-2 p-3 row">
-        <h3 class="col-9 me-4 d-flex justify-content-end">
-          <strong>Preu pressupostat:</strong>
-        </h3>
-        <h3 class="col-1 ms-4 d-flex justify-content-end">
-          <strong>{{ this.budgets[0].total }}€</strong>
-        </h3>
-      </div>
     </form>
+
+    <div class="d-flex justify-content-end mx-5 my-2 p-3 row">
+      <h3 class="col-9 me-4 d-flex justify-content-end">
+        <strong>Preu pressupostat:</strong>
+      </h3>
+      <h3 class="col-1 ms-4 d-flex justify-content-end">
+        <strong>{{ this.budgets[0].total }}€</strong>
+      </h3>
+    </div>
+
+    <app-welcome 
+    [budgets]="budgets"
+    (sendClicked)="onSendClicked()"
+    (sendResetCheck3)="panelComponent.resetCheck3()">
+    </app-welcome>
+    
+    <app-budgets-list [budgets]="budgets"></app-budgets-list>
   </div>
 </div>

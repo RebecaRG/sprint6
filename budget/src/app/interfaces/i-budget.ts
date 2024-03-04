@@ -4,7 +4,8 @@ export interface Ibudget{
     email: string;
     services: ('seo' | 'ads' | 'web')[];
     pagesWeb: number;
-    lenguagesWeb: number;
+    languagesWeb: number;
     totalWeb: number;
     total: number; 
+    date: Date;
 }
