@@ -31,7 +31,7 @@ export class WelcomeComponent {
   }
 
   formUser = new FormGroup({
-    'name': new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+ [a-zA-Z]+$/)]),
+    'name': new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z ]{3,}$/)]),
     'telephone' : new FormControl('', [Validators.required, Validators.pattern(/^(?:(?:\+?[0-9]{2,4})?[ ]?[6789][0-9 ]{8,13})$/)]),
     'email' : new FormControl('', [Validators.required, Validators.email])
   });
